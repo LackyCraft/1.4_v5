@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Eyes"
              StartupUri="EyesMainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Dictionary.xaml"/>
     </Application.Resources>
 </Application>
