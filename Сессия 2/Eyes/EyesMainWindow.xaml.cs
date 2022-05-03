@@ -250,9 +250,9 @@ namespace Eyes
         //Добавление нового агента
         private void clickButtonAddNewProcent(object sender, RoutedEventArgs e)
         {
-            //AddNewMaterialWindow ownedWindow = new AddNewMaterialWindow();
-            //ownedWindow.Owner = this;
-            //ownedWindow.Show();
+            AddAgentWindow ownedWindow = new AddAgentWindow();
+            ownedWindow.Owner = this;
+            ownedWindow.Show();
         }
 
         //Редактирование выделенного материала

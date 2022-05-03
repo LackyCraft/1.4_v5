@@ -131,7 +131,7 @@
 ![image](https://user-images.githubusercontent.com/20025263/166503091-d42ab41d-51af-4e2c-bb52-8c7ec0eaad68.png)
 
 ## Дабавление 
-![image]()
+![image](https://user-images.githubusercontent.com/20025263/166569057-3b5c6815-b6cb-48e3-a314-b2a2884f7459.png)
 
 ## Редактирование 
 ![image]()
