@@ -41,7 +41,6 @@ namespace Eyes
                     {
                         ComboBoxFilter.Items.Add(agentItemsType);
                     }
-                
 
                 //заполняем комбобок сортировки типами для сортировки
                 List<string> sortList = new List<string>() { "Нимаенование (по возрастанию)", "Размер скидки (по возрастанию)", "Стоимость (по возрастанию)",
@@ -58,6 +57,13 @@ namespace Eyes
                 MessageBox.Show("Warning x0\nПроизошла непредвиденная ошибка\nПотеряно соединение с базой данных");
             }
 
+        }
+
+        void butonClickPage(object sender, EventArgs e)
+        {
+            Button pageButton = sender as Button;
+            TextBoxPageNumber.Text = pageButton.Content.ToString();
+            drawDataGrid();
         }
 
         //Функция обновляет лист, который является эталонной копией БД. Вызывается исключительно в дочерних страницах
@@ -115,6 +121,24 @@ namespace Eyes
 
             //Считаем сколько, строк надо пропустить до выбранной страницы.
             int skipSize = (int.Parse(TextBoxPageNumber.Text) - 1) * PageSize;
+
+            StackPanelPageList.Children.Clear();
+            for (int i = 1; i <= ((gridAgentslList.Count + PageSize - 1) / PageSize); i++)
+            {
+                Button pageButton = new Button();
+                pageButton.Content = i.ToString();
+                pageButton.Background = null;
+                pageButton.Foreground = (Brush)Application.Current.MainWindow.FindResource("fiol");
+                pageButton.BorderBrush = null;
+                if (i.ToString() == TextBoxPageNumber.Text)
+                {
+                    pageButton.FontWeight = FontWeights.Bold;
+                    pageButton.Foreground = Brushes.Red;
+                }
+                pageButton.Click += butonClickPage;
+
+                StackPanelPageList.Children.Add(pageButton);
+            }
 
             //Заполняем грид 15-ю записями с нужной нам страницы
             DataGridAgentList.ItemsSource = gridAgentslList.Skip(skipSize).Take(PageSize);
