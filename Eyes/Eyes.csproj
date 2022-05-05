@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9EF285B-7D68-4CE6-A372-D9DB2215CEB4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Eyes</RootNamespace>
+    <AssemblyName>Eyes</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AddAgentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EyesMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="AddAgentWindow.xaml.cs">
+      <DependentUpon>AddAgentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataBase\Agent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\AgentList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\AgentPriorityHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\AgentType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Material.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MaterialCountHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MaterialType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductCostHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductMaterial.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductSale.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Shop.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Supplier.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EyesMainWindow.xaml.cs">
+      <DependentUpon>EyesMainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="DataBase\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBase\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DataBase\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="DataBase\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Icon\Глазки-save.ico" />
+    <Resource Include="Image\Icon\Глазки-save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Agents\agent_1.png" />
+    <Resource Include="Image\Agents\agent_10.png" />
+    <Resource Include="Image\Agents\agent_100.png" />
+    <Resource Include="Image\Agents\agent_101.png" />
+    <Resource Include="Image\Agents\agent_102.png" />
+    <Resource Include="Image\Agents\agent_103.png" />
+    <Resource Include="Image\Agents\agent_104.png" />
+    <Resource Include="Image\Agents\agent_105.png" />
+    <Resource Include="Image\Agents\agent_106.png" />
+    <Resource Include="Image\Agents\agent_107.png" />
+    <Resource Include="Image\Agents\agent_108.png" />
+    <Resource Include="Image\Agents\agent_109.png" />
+    <Resource Include="Image\Agents\agent_11.png" />
+    <Resource Include="Image\Agents\agent_110.png" />
+    <Resource Include="Image\Agents\agent_111.png" />
+    <Resource Include="Image\Agents\agent_112.png" />
+    <Resource Include="Image\Agents\agent_113.png" />
+    <Resource Include="Image\Agents\agent_114.png" />
+    <Resource Include="Image\Agents\agent_115.png" />
+    <Resource Include="Image\Agents\agent_116.png" />
+    <Resource Include="Image\Agents\agent_117.png" />
+    <Resource Include="Image\Agents\agent_118.png" />
+    <Resource Include="Image\Agents\agent_119.png" />
+    <Resource Include="Image\Agents\agent_12.png" />
+    <Resource Include="Image\Agents\agent_120.png" />
+    <Resource Include="Image\Agents\agent_121.png" />
+    <Resource Include="Image\Agents\agent_122.png" />
+    <Resource Include="Image\Agents\agent_123.png" />
+    <Resource Include="Image\Agents\agent_124.png" />
+    <Resource Include="Image\Agents\agent_125.png" />
+    <Resource Include="Image\Agents\agent_126.png" />
+    <Resource Include="Image\Agents\agent_127.png" />
+    <Resource Include="Image\Agents\agent_128.png" />
+    <Resource Include="Image\Agents\agent_129.png" />
+    <Resource Include="Image\Agents\agent_13.png" />
+    <Resource Include="Image\Agents\agent_130.png" />
+    <Resource Include="Image\Agents\agent_14.png" />
+    <Resource Include="Image\Agents\agent_15.png" />
+    <Resource Include="Image\Agents\agent_16.png" />
+    <Resource Include="Image\Agents\agent_17.png" />
+    <Resource Include="Image\Agents\agent_18.png" />
+    <Resource Include="Image\Agents\agent_19.png" />
+    <Resource Include="Image\Agents\agent_2.png" />
+    <Resource Include="Image\Agents\agent_20.png" />
+    <Resource Include="Image\Agents\agent_21.png" />
+    <Resource Include="Image\Agents\agent_22.png" />
+    <Resource Include="Image\Agents\agent_23.png" />
+    <Resource Include="Image\Agents\agent_24.png" />
+    <Resource Include="Image\Agents\agent_25.png" />
+    <Resource Include="Image\Agents\agent_26.png" />
+    <Resource Include="Image\Agents\agent_27.png" />
+    <Resource Include="Image\Agents\agent_28.png" />
+    <Resource Include="Image\Agents\agent_29.png" />
+    <Resource Include="Image\Agents\agent_3.png" />
+    <Resource Include="Image\Agents\agent_30.png" />
+    <Resource Include="Image\Agents\agent_31.png" />
+    <Resource Include="Image\Agents\agent_32.png" />
+    <Resource Include="Image\Agents\agent_33.png" />
+    <Resource Include="Image\Agents\agent_34.png" />
+    <Resource Include="Image\Agents\agent_35.png" />
+    <Resource Include="Image\Agents\agent_36.png" />
+    <Resource Include="Image\Agents\agent_37.png" />
+    <Resource Include="Image\Agents\agent_38.png" />
+    <Resource Include="Image\Agents\agent_39.png" />
+    <Resource Include="Image\Agents\agent_4.png" />
+    <Resource Include="Image\Agents\agent_40.png" />
+    <Resource Include="Image\Agents\agent_41.png" />
+    <Resource Include="Image\Agents\agent_42.png" />
+    <Resource Include="Image\Agents\agent_43.png" />
+    <Resource Include="Image\Agents\agent_44.png" />
+    <Resource Include="Image\Agents\agent_45.png" />
+    <Resource Include="Image\Agents\agent_46.png" />
+    <Resource Include="Image\Agents\agent_47.png" />
+    <Resource Include="Image\Agents\agent_48.png" />
+    <Resource Include="Image\Agents\agent_49.png" />
+    <Resource Include="Image\Agents\agent_5.png" />
+    <Resource Include="Image\Agents\agent_50.png" />
+    <Resource Include="Image\Agents\agent_51.png" />
+    <Resource Include="Image\Agents\agent_52.png" />
+    <Resource Include="Image\Agents\agent_53.png" />
+    <Resource Include="Image\Agents\agent_54.png" />
+    <Resource Include="Image\Agents\agent_55.png" />
+    <Resource Include="Image\Agents\agent_56.png" />
+    <Resource Include="Image\Agents\agent_57.png" />
+    <Resource Include="Image\Agents\agent_58.png" />
+    <Resource Include="Image\Agents\agent_59.png" />
+    <Resource Include="Image\Agents\agent_6.png" />
+    <Resource Include="Image\Agents\agent_60.png" />
+    <Resource Include="Image\Agents\agent_61.png" />
+    <Resource Include="Image\Agents\agent_62.png" />
+    <Resource Include="Image\Agents\agent_63.png" />
+    <Resource Include="Image\Agents\agent_64.png" />
+    <Resource Include="Image\Agents\agent_65.png" />
+    <Resource Include="Image\Agents\agent_66.png" />
+    <Resource Include="Image\Agents\agent_67.png" />
+    <Resource Include="Image\Agents\agent_68.png" />
+    <Resource Include="Image\Agents\agent_69.png" />
+    <Resource Include="Image\Agents\agent_7.png" />
+    <Resource Include="Image\Agents\agent_70.png" />
+    <Resource Include="Image\Agents\agent_71.png" />
+    <Resource Include="Image\Agents\agent_72.png" />
+    <Resource Include="Image\Agents\agent_73.png" />
+    <Resource Include="Image\Agents\agent_74.png" />
+    <Resource Include="Image\Agents\agent_75.png" />
+    <Resource Include="Image\Agents\agent_76.png" />
+    <Resource Include="Image\Agents\agent_77.png" />
+    <Resource Include="Image\Agents\agent_78.png" />
+    <Resource Include="Image\Agents\agent_79.png" />
+    <Resource Include="Image\Agents\agent_8.png" />
+    <Resource Include="Image\Agents\agent_80.png" />
+    <Resource Include="Image\Agents\agent_81.png" />
+    <Resource Include="Image\Agents\agent_82.png" />
+    <Resource Include="Image\Agents\agent_83.png" />
+    <Resource Include="Image\Agents\agent_84.png" />
+    <Resource Include="Image\Agents\agent_85.png" />
+    <Resource Include="Image\Agents\agent_86.png" />
+    <Resource Include="Image\Agents\agent_87.png" />
+    <Resource Include="Image\Agents\agent_88.png" />
+    <Resource Include="Image\Agents\agent_89.png" />
+    <Resource Include="Image\Agents\agent_9.png" />
+    <Resource Include="Image\Agents\agent_90.png" />
+    <Resource Include="Image\Agents\agent_91.png" />
+    <Resource Include="Image\Agents\agent_92.png" />
+    <Resource Include="Image\Agents\agent_93.png" />
+    <Resource Include="Image\Agents\agent_94.png" />
+    <Resource Include="Image\Agents\agent_95.png" />
+    <Resource Include="Image\Agents\agent_96.png" />
+    <Resource Include="Image\Agents\agent_97.png" />
+    <Resource Include="Image\Agents\agent_98.png" />
+    <Resource Include="Image\Agents\agent_99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\picture.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" />
+</Project>
