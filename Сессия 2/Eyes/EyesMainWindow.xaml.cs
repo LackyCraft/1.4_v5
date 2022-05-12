@@ -260,9 +260,9 @@ namespace Eyes
         {
             if (DataGridAgentList.SelectedItems.Count > 0)
             {
-                //EditMaterialWindows ownedWindow = new EditMaterialWindows(DataGridMaterialList.SelectedItems[0] as DataBase.MaterialList);
-                //ownedWindow.Owner = this;
-                //ownedWindow.Show();
+                EditWindow ownedWindow = new EditWindow(DataBase.Entities.GetContext().Agent.Find((DataGridAgentList.SelectedItems[0] as DataBase.AgentList).ID));
+                ownedWindow.Owner = this;
+                ownedWindow.Show();
             }
             else
             {
